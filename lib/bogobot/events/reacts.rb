@@ -8,7 +8,7 @@ module BogoBot
         event.message.react "🙏"
       end
       
-      message(contains: /lit/i) do |event|
+      message(contains: /(^|\s)lit($|\s)/i) do |event|
         event.message.react "🔥"
       end
       
