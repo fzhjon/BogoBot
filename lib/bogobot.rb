@@ -1,10 +1,6 @@
 require 'discordrb'
 require 'yaml'
-require_relative 'events'
-require_relative 'events/replies'
-require_relative 'commands'
-require_relative 'commands/flip'
-require_relative 'commands/roll'
+Dir["#{File.dirname(__FILE__)}/bogobot/*.rb"].each { |file| require file }
 
 module BogoBot
   Config = YAML.load_file('../data/config.yaml')
