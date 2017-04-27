@@ -5,7 +5,8 @@ module BogoBot
     Dir["#{File.dirname(__FILE__)}/events/*.rb"].each { |file| require file }
   
     @events = [
-    Replies
+    Replies,
+    Reacts
     ]
     
     def self.include!
