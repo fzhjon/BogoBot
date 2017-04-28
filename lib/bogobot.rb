@@ -12,5 +12,8 @@ module BogoBot
   Events.include!
   Commands.include!
   
-  Bot.run
+  Bot.run(:async)
+  loop do
+    sleep(10)
+  end
 end
