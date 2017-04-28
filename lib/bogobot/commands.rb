@@ -6,7 +6,10 @@ module BogoBot
   
     @commands = [
     Flip,
-    Roll
+    Roll,
+    Join,
+    Leave,
+    Play
     ]
     
     def self.include!
