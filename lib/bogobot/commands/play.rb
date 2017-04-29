@@ -9,7 +9,7 @@ module BogoBot
       command(:play,
               min_args:1,
               usage:"'play query', where query is a url or youtube query. Attempts to play the relevant audio.",
-              description: 'Plays a given audio source.') do |event, query|
+              description: 'Plays a given audio source.') do |event, *query|
         # Run query through youtube-dl first
         options = {default_search: 'auto', playlist_end: 10, format: 'bestaudio/best'}
         results = YoutubeDL::Video.new(query, options).information
