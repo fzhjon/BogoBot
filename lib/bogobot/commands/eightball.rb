@@ -34,7 +34,7 @@ module BogoBot
 		"outlook not so good", 
 		"very doubtful"]	  
 			
-		event.send_message("%s" % [fortunes[rand(0..19)]])	
+		event.send_message(fortunes[rand(0..19)])	
 		end
   
   
