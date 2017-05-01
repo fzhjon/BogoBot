@@ -10,7 +10,8 @@ module BogoBot
     Join,
     Leave,
     Play,
-    Eightball
+    Eightball,
+    Define
     ]
     
     def self.include!

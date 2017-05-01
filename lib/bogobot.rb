@@ -1,6 +1,7 @@
 require 'discordrb'
 require 'yaml'
 require 'youtube-dl.rb'
+require 'json'
 Dir["#{File.dirname(__FILE__)}/bogobot/*.rb"].each { |file| require file }
 
 module BogoBot
