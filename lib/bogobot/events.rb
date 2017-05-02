@@ -6,7 +6,8 @@ module BogoBot
   
     @events = [
     Replies,
-    Reacts
+    Reacts,
+    Mentions
     ]
     
     def self.include!
