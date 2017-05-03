@@ -10,6 +10,7 @@ module BogoBot
     Join,
     Leave,
     Play,
+    Stop,
     Eightball,
     Define
     ]
