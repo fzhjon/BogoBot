@@ -3,6 +3,7 @@ require 'yaml'
 require 'youtube-dl.rb'
 require 'json'
 Dir["#{File.dirname(__FILE__)}/bogobot/*.rb"].each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/discordrb/*.rb"].each { |file| require file }
 
 module BogoBot
   Config = YAML.load_file('data/config.yaml')
@@ -14,5 +15,8 @@ module BogoBot
   Events.include!
   Commands.include!
   
-  Bot.run
+  Bot.run(:async)
+  loop do
+    sleep(10)
+  end
 end

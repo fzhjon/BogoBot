@@ -9,28 +9,26 @@ module BogoBot
               min_args:1,
               usage:"'play/y/p query', where query is a url or youtube query. Attempts to play the relevant audio.",
               description: 'Plays a given audio source.') do |event, *query|
-        # Run query through youtube-dl first
-        options = {
-                    default_search: 'auto',
-                    playlist_end: 10, 
-                    format: 'bestaudio/best'
-                  }
+                  
         fixed_query = query.join(' ')
-        results = YoutubeDL::Video.new(fixed_query, options).information
         
-        # TODO: error checking in case the youtube-dl call fails
+        player = event.server.player
+        player.add_video(fixed_query)
         
-        # Find direct audio url and other data from results
-        url = results[:url]
-        title = results[:title]
-        uploader = results[:uploader]
+        unless player.playing
+          player.playing = true
+          loop do
+            break if player.queue.empty?
+            video = player.queue.shift
+            event.send_message("%s - %s" % [video.title, video.uploader])
+            event.voice.play_file(video.path)
+          end
+          player.playing = false
+        end
         
-        # Show found audio
-        event.send_message("%s - %s" % [title, uploader])
-        # Library function to play found audio url
-        event.voice.play_file(url)
+        nil
+        
       end
-      
       
     end
     

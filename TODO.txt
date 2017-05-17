@@ -1,0 +1,3 @@
+- Add queue command, skip, delete (at index)
+- Cleanup downloaded files after playing
+- Get more information from youtube-dl to format video info more nicely
