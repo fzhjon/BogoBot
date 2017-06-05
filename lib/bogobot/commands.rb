@@ -3,7 +3,7 @@ module BogoBot
   module Commands
     # Require files from directory
     Dir["#{File.dirname(__FILE__)}/commands/*.rb"].each { |file| require file }
-  
+
     @commands = [
     Flip,
     Roll,
@@ -12,14 +12,15 @@ module BogoBot
     Play,
     Stop,
     Eightball,
-    Define
+    Define,
+    Roulette
     ]
-    
+
     def self.include!
       @commands.each do |command|
         BogoBot::Bot.include!(command)
       end
     end
   end
-  
+
 end
