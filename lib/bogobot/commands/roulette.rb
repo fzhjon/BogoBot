@@ -22,8 +22,9 @@ module BogoBot
           points.insert_one(doc)
         end
 
-        # Take the points they're betting
+        # Take the points the user is betting
         result = bet.to_i
+        # Get the user's current point balance
         doc = points.find(name: player.id).first
         new_total = doc["points"].to_i
 
@@ -54,8 +55,9 @@ module BogoBot
             event.send_message("You rich boi!!!")
           end
 
+          # Calculate new balance
           new_total = new_total + result
-          # Update database
+          # Update database and output new ba;ance
           points.update_one({ 'name' => player.id }, { '$set'=> { 'points' => new_total } } )
           event.send_message("New Point Total: #{ new_total }")
         end
