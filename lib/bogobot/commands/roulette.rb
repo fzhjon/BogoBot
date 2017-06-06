@@ -17,8 +17,8 @@ module BogoBot
 
         # Give first time users some free points
         if points.count(name: player.id) == 0
-          event.send_message("You've never played before so here's 1000 points!")
-          doc = { name: player.id, points: 1000 }
+          event.send_message("You've never played before so here's 10000 points!")
+          doc = { name: player.id, points: 10000 }
           points.insert_one(doc)
         end
 
