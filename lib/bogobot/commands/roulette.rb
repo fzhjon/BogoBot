@@ -8,10 +8,10 @@ module BogoBot
 
       command(:roulette,
               min_args:1,
-              usage:"roulette <points>, where points your bet",
+              usage:"roulette <points>, where points is your bet",
               description: "Bet points for big gains!") do |event, bet|
 
-        client = Mongo::Client.new(ENV['POINTSDB'])
+        client = Mongo::Client.new('mongodb://127.0.0.1:27017/test')
         points = client[:points]
         player = event.user
 
@@ -24,7 +24,7 @@ module BogoBot
 
         # Take the points they're betting
         result = bet.to_i
-        doc = points.find(name: player.id)
+        doc = points.find(name: player.id).first
         new_total = doc["points"].to_i - result
         # Gamble calculations
         chance = rand(0..10)

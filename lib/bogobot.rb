@@ -3,7 +3,6 @@ require 'yaml'
 require 'youtube-dl.rb'
 require 'json'
 require 'mongo'
-
 Dir["#{File.dirname(__FILE__)}/bogobot/*.rb"].each { |file| require file }
 Dir["#{File.dirname(__FILE__)}/discordrb/*.rb"].each { |file| require file }
 
